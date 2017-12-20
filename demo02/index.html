@@ -7,6 +7,8 @@
   </head>
   <body>
     <div id="example"></div>
+    <div id="example2"></div>
+    <div id="example3"></div>
     <script type="text/babel">
       var names = ['Alice', 'Emily', 'Kate'];
 
@@ -20,6 +22,35 @@
         </div>,
         document.getElementById('example')
       );
+
+
+      var tem = [];
+      ReactDOM.render(
+        <div>
+          {
+            (function(){
+              for(var k in names){
+                tem.push(<span key={k}>Hello,{names[k]}</span>);
+              }
+              return tem;
+            })()
+          }
+        </div>,
+        document.getElementById('example2')
+      )
+
+      //  上面的写法，等价于下面的写法
+      var obj = {a:1,b:2};
+      var tem = [];
+      for(var k in obj){
+        tem.push(<span key={k}>{k}----{obj[k]}</span>);
+      }
+      
+      ReactDOM.render(
+        <div>{tem}</div>,
+        document.getElementById('example3')
+      );
+
     </script>
   </body>
 </html>
