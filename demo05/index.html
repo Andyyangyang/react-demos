@@ -4,12 +4,19 @@
     <script src="../build/react.js"></script>
     <script src="../build/react-dom.js"></script>
     <script src="../build/browser.min.js"></script>
+    <style type="text/css">
+      .class1{
+        background-color: pink;
+      }
+    </style>
   </head>
   <body>
     <div id="example"></div>
+    <div id="example2"></div>
     <script type="text/babel">
       var NotesList = React.createClass({
         render: function() {
+          //console.log(6666,this.props)
           return (
             <ol>
               {
@@ -21,7 +28,6 @@
           );
         }
       });
-
       ReactDOM.render(
         <NotesList>
           <span>hello</span>
@@ -29,6 +35,28 @@
         </NotesList>,
         document.getElementById('example')
       );
+
+
+      
+      var TemTpl = React.createClass({
+        render:function(){
+          console.log(6666,this.props);
+            var arr = [],
+                obj = {a:1,b:2};
+
+            for(var k in obj){
+              arr.push(<li key={k}>{k}---{obj[k]}</li>)
+            }
+            return <ul className={this.props.class}>{arr}</ul>
+        }
+      });
+      ReactDOM.render(
+        <TemTpl class="class1" name="name1" ></TemTpl>,
+        document.getElementById('example2')
+      );
+
+
+
     </script>
   </body>
 </html>
