@@ -8,12 +8,13 @@
   <body>
     <div id="example"></div>
     <script type="text/babel">
-      var HelloMessage = React.createClass({
+      var opt = {
         render: function() {
           console.log(1111,this)
           return <h1>Hello {this.props.name}</h1>;
         }
-      });
+      };
+      var HelloMessage = React.createClass(opt);
 
       ReactDOM.render(
         <HelloMessage name="John" />,

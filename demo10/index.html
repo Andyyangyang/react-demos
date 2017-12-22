@@ -16,19 +16,22 @@
         },
 
         componentDidMount: function () {
+          console.log(33333)
+          var me = this;
           this.timer = setInterval(function () {
-            var opacity = this.state.opacity;
+            var opacity = me.state.opacity;
             opacity -= .05;
             if (opacity < 0.1) {
               opacity = 1.0;
             }
-            this.setState({
+            me.setState({
               opacity: opacity
             });
-          }.bind(this), 100);
+          }, 100);
         },
 
         render: function () {
+          console.log(1111)
           return (
             <div style={{opacity: this.state.opacity}}>
               Hello {this.props.name}
@@ -40,6 +43,7 @@
       ReactDOM.render(
         <Hello name="world"/>,
         document.getElementById('example')
+
       );
     </script>
   </body>

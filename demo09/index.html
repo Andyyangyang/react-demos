@@ -8,7 +8,7 @@
   <body>
     <div id="example"></div>
     <script type="text/babel">
-      var Input = React.createClass({
+      var opt = {
         getInitialState: function() {
           return {value: 'Hello!'};
         },
@@ -24,9 +24,12 @@
             </div>
           );
         }
-      });
+      };
 
-      ReactDOM.render(<Input/>, document.getElementById('example'));
+      var Input = React.createClass(opt);
+
+      var vm = ReactDOM.render(<Input/>, document.getElementById('example'));
+      console.log(1234,vm)
     </script>
   </body>
 </html>

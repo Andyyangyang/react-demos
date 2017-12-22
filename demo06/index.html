@@ -4,12 +4,16 @@
     <script src="../build/react.js"></script>
     <script src="../build/react-dom.js"></script>
     <script src="../build/browser.min.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
   </head>
   <body>
     <div id="example"></div>
+    <div id="example2"></div>
+   
     <script type="text/babel">
 
-      var data = 123;
+      var data = '123';
+      var tem = 6666;
 
       var MyTitle = React.createClass({
         propTypes: {
@@ -17,13 +21,38 @@
         },
 
         render: function() {
-          return <h1> {this.props.title} </h1>;
+          return <h1> {this.props.title} --- {tem}</h1>;
         }
       });
 
       ReactDOM.render(
-        <MyTitle title={data} />,
+        <MyTitle title={data}/>,
         document.getElementById('example')
+      );
+
+
+
+      var data = 123;
+      var MyTitle = React.createClass({
+        propTypes: {
+          title: React.PropTypes.string.isRequired,
+        },
+
+        getDefaultProps : function () {
+          return {
+            title : 'Hello World',
+            data_id: 1234
+          };
+        },
+
+        render: function() {
+          return <h1> {this.props.title} --- {tem} -- {this.props.data_id}</h1>;
+        }
+      });
+
+      ReactDOM.render(
+        <MyTitle data_id="1111"/>,
+        document.getElementById('example2')
       );
 
     </script>

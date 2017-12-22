@@ -8,24 +8,50 @@
   <body>
     <div id="example"></div>
     <script type="text/babel">
-var MyComponent = React.createClass({
-  handleClick: function() {
-    this.refs.myTextInput.focus();
-  },
-  render: function() {
-    return (
-      <div>
-        <input type="text" ref="myTextInput" />
-        <input type="button" value="Focus the text input" onClick={this.handleClick} />
-      </div>
-    );
-  }
-});
+      var MyComponent = React.createClass({
+        handleClick: function() {
+          this.refs.myTextInput.focus();
+        },
+        render: function() {
+          console.log(33333)
+          return (
+            <div>
+              <input type="text" ref="myTextInput" />
+              <input type="button" value="Focus the text input" onClick={this.handleClick} />
+            </div>
+          );
+        }
+      });
 
-ReactDOM.render(
-  <MyComponent />,
-  document.getElementById('example')
-);
+      ReactDOM.render(
+        <MyComponent />,
+        document.getElementById('example')
+      );
+    </script>
+
+    <div id="example2"></div>
+    <script type="text/babel">
+      var num = 1;
+      var opt = {
+        handleClick: function() {
+          
+          this.refs.myTextInput.value = ++num;
+        },
+        render: function() {
+          console.log(666,this)
+          var tpl = <div>
+                      <input type="text" ref="myTextInput" />
+                      <input type="button" ref="myButtonInput" value="Focus the text input" onClick={this.handleClick} />
+                    </div>
+          return tpl;
+        }
+      }
+      var MyComponent = React.createClass(opt);
+
+      ReactDOM.render(
+        <MyComponent />,
+        document.getElementById('example2')
+      );
     </script>
   </body>
 </html>

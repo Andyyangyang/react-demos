@@ -8,27 +8,41 @@
   <body>
     <div id="example"></div>
     <script type="text/babel">
-var LikeButton = React.createClass({
-  getInitialState: function() {
-    return {liked: false};
-  },
-  handleClick: function(event) {
-    this.setState({liked: !this.state.liked});
-  },
-  render: function() {
-    var text = this.state.liked ? 'like' : 'haven\'t liked';
-    return (
-      <p onClick={this.handleClick}>
-        You {text} this. Click to toggle.
-      </p>
-    );
-  }
-});
 
-ReactDOM.render(
-  <LikeButton />,
-  document.getElementById('example')
-);
+      var opt = {
+        getInitialState: function() {
+          return {
+            liked: false,
+            msg: 'hello world!'
+          };
+        },
+
+        handleClick: function(event) {
+          this.setState({liked: !this.state.liked});
+          //console.log(121212)
+        },
+
+        handleInput:function(event) {
+          this.setState({msg: event.target.value});
+        },
+
+        render: function() {
+          console.log(1111)
+          var text = this.state.liked ? 'like' : 'don\'t liked';
+          var tpl = <div>
+                      <p onClick={this.handleClick}>You {text} this. Click to toggle.</p>
+                      <input onChange={this.handleInput} value={this.state.msg}/><br/>
+                      <b>{this.state.msg}</b>
+                    </div>
+          return tpl;
+        }
+      };
+      var LikeButton = React.createClass(opt);
+
+      ReactDOM.render(
+        <LikeButton />,
+        document.getElementById('example')
+      );
     </script>
   </body>
 </html>
